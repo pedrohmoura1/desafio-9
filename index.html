@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Bootstrap CSS -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        
+        <title>MATRICULA ALUNO</title>
+    </head>
+    <body>
+        <div class="container">
+            <section>
+                <h1 class="text-center">Formulario de Cadastro Aluno</h1>
+                <div class="form-group">
+                    <form class="row g-3 needs-validation" novalidate>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <span class="input-group-text">Primeiro Nome e Sobrenome</span>
+                                <input type="text" aria-label="First name" class="form-control" id="inputNome" required>
+                                <div class="valid-feedback">
+                                    Look good!
+                                </div>
+                                <input type="text" aria-label="Last name" class="form-control" id="inputSobreNome" required>
+                              </div>
+                        </div>
+                        <div class="col-2">
+                            <div class=" input-group">
+                                <span class="input-group-text">RA</span>
+                                <input type="number" class="form-control" id="inputRA" required="required">
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Idade</span>
+                                <input type="number" class="form-control" id="inputIdade" placeholder="Ex.: 20 (Apenas numeros)" required>
+                            </div>
+                        </div>
+                        <div class="col-3">
+                            <div class="input-group">
+                                <span class="input-group-text">Sexo</span>
+                                <select class="form-select" id="inputSexo">
+                                    <option selected>Escolha...</option>
+                                    <option value="Masculino">Masculino</option>
+                                    <option value="Feminino">Feminino</option>
+                            </select>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="input-group">
+                                <span class="input-group-text">Data De Matricula</span>
+                                <input type="date" class="form-control" id="inputData" required>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="input-group">
+                                <button type="submit" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="add()">Cadastrar</button>
+                                <span id="botao"></span>
+                                <button type="button" class="btn btn-outline-primary"  onclick="remove()">Remover</button>
+                                <button type="button" class="btn btn-outline-primary"  onclick="limpar()">Limpar</button>
+                            </div>    
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section>
+                <div class="container">
+                    <div id="tabela">
+
+                    </div>
+                    
+                </div>
+            </section>
+            
+
+    
+            <!-- Modal  dados-->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Confirmar Dados</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="remove()"></button>
+                    </div>
+                    <div class="modal-body">
+                     <div id="ConteudoModal"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal" onclick="remove()">Voltar</button>
+                        <span id="btnSalvar1">
+                            <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Salvar</button>
+                        </span>
+                        
+                    </div>
+                </div>
+                </div>
+            </div>
+
+            <!-- Modal matricula-->
+            <div class="modal fade" id="Matricula" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Adcionar Disciplina</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                     <div id="ConteudoModal2">
+                         <div class="form-group">
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Disciplina</span>
+                                    <input type="text" class="form-control" id="inputDisciplina" required>
+                                </div>
+                              </div>
+                              <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">Data</span>
+                                    <input type="date" class="form-control" id="inputDataMatricula" required>
+                                </div>
+                              </div>
+                         </div>
+                     </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Voltar</button>
+                        <button type="button" class="btn btn-primary" data-bs-dismiss="modal" onclick="addMat()">Cadastrar</button>
+                    </div>
+                </div>
+                </div>
+            </div>
+
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+        <script src="Aluno.js"></script>
+    </body>
+</html>
